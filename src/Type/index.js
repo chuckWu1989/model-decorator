@@ -1,28 +1,49 @@
-export const isNumber = value => typeof value === 'number';
-export const isString = value => typeof value === 'string';
-export const isArray = value => Array.isArray(value);
-export const isBool = value => typeof value === 'boolean';
-export const isObject = value => typeof value === 'object' && value !== null;
-export const isNull = value => value === null;
-export const isUndefined = value => value === undefined;
-export const check = (type, value) => {
-  switch (type) {
-    case 'number': return isNumber(value);
-    case 'string': return isString(value);
-    case 'array': return isArray(value);
-    case 'bool': return isBool(value);
-    case 'object': return isObject(value);
-    case 'null': return isNull(value);
-    case 'undefined': return isUndefined(value);
-    default: break;
+/* eslint no-console: off */
+import secret from './config';
+
+export const enhanceTarget = type => (
+  (refObj) => {
+    const prototype = {};
+    Object.defineProperty(prototype, 'getType', {
+      value: () => type,
+    });
+    Object.setPrototypeOf(refObj, prototype);
   }
-  return undefined;
-};
+);
+export const checkPropTypes = (propTypes, className, name) => (
+  (value) => {
+    let result;
+    try {
+      const checkResult = propTypes(
+        { [name]: value },
+        name,
+        className,
+        name,
+        null,
+        secret,
+      );
+      if (checkResult === null) {
+        result = true;
+      } else {
+        console.error(checkResult);
+        result = false;
+      }
+    } catch (e) {
+      result = false;
+    }
+    return result;
+  }
+);
 export default (type, { errorMessage: message } = {}) => (
   (target, name, descriptor) => {
-    const { checkers = [] } = descriptor;
-    checkers.push({ check, message });
-    descriptor.checkers = checkers;
+    const { name: className } = target.constructor;
+    const { decorators = [] } = descriptor;
+    decorators.push({
+      check: checkPropTypes(type, className, name),
+      enhancer: enhanceTarget(type),
+      message,
+    });
+    descriptor.decorators = decorators;
     return descriptor;
   }
 );

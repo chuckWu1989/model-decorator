@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Member from '../../models/Member';
+import { ViewModel } from '../../../src';
 import './style.less';
 
-const member = new Member();
-member.name = 'John';
-console.log(member.name);
-
-const SimpleExample = () => (
-  <div />
-);
+@ViewModel(Member)
+class SimpleExample extends Component {
+  render() {
+    return (
+      <div />
+    );
+  }
+}
 
 export default SimpleExample;

@@ -1,12 +1,12 @@
 import lodash from 'lodash';
 
-export const setter = (refObj, descriptor) => (
+export const setter = (refObj, validates) => (
   (value) => {
-    const { checkers = [] } = descriptor;
-    checkers.every((checker) => {
-      const isPassed = checker.check(value);
+    validates.every((item) => {
+      const { check, message } = item;
+      const isPassed = check(value, refObj);
       if (!isPassed) {
-        refObj.error = checker.message;
+        refObj.error = message;
         return false;
       }
       return true;
@@ -19,9 +19,14 @@ export const getter = refObj => (
 );
 export default (target, name, descriptor) => {
   const refObj = {};
+  const { decorators = [] } = descriptor;
+  const validates = decorators.map(({ check, message }) => ({ check, message }));
+  let enhancers = decorators.map(({ enhancer }) => enhancer);
+  enhancers = enhancers.filter(item => item !== undefined);
+  enhancers.forEach((enhancer) => { enhancer(refObj); });
   return ({
     get: getter(refObj),
-    set: setter(refObj, descriptor),
+    set: setter(refObj, validates),
     configurable: true,
     enumerable: true,
   });
