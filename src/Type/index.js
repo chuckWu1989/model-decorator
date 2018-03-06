@@ -18,12 +18,13 @@ export const check = (type, value) => {
   }
   return undefined;
 };
-export const Type = (type, { errorMessage: message } = {}) => (
+export default (type, { errorMessage: message } = {}) => (
   (target, name, descriptor) => {
     const { checkers = [] } = descriptor;
     checkers.push({ check, message });
+    Object.defineProperties(descriptor, 'checkers', {
+      value: checkers,
+    });
     return descriptor;
   }
 );
-
-export default Type;
