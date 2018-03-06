@@ -1,0 +1,42 @@
+.router-style {
+  height: 100%;
+  width: 100%;
+  font-family: 'Microsoft JhengHei';
+  .header {
+    width: 100%;
+    height: 60px;
+    background-color: #0086DB;
+    div {
+      font-size: 25px;
+      color: #ffffff;
+      padding: 15px 0 0 20px;
+    }
+  }
+  .navigator, .content-body {
+    width: 100%;
+  }
+  .content-body {
+    height: calc(~"100% - 110px");
+  }
+  .navigator {
+    height: 50px;
+    background-color: #2ca9e1;
+    overflow-y: hidden;
+    .item {
+      width: 150px;
+      height: 100%;
+      a {
+        font-size: 15px;
+        margin: 15px 0;
+        margin-left: 25px;
+        display: inline-block;
+        color: #ffffff;
+        text-decoration-line: none;
+        padding-bottom: 10px;
+      }
+      a:hover {
+        border-bottom: solid 2px #ffffff;
+      }
+    }
+  }
+}

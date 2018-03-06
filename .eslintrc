@@ -22,7 +22,11 @@
   "rules": {
     "react/jsx-filename-extension": ["warn", { "extensions": [".js"] }],
     "react/forbid-prop-types": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off",
+    "jsx-a11y/anchor-is-valid":  [ "off", {
+      "components": [ "Link" ]
+    }]
   },
   "settings": {
     "import/resolver": {

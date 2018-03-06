@@ -6,23 +6,23 @@ export const setter = (refObj, descriptor) => (
     checkers.every((checker) => {
       const isPassed = checker.check(value);
       if (!isPassed) {
-        Object.defineProperty(refObj, 'error', {
-          value: checker.message,
-        });
+        refObj.error = checker.message;
         return false;
       }
       return true;
     });
-    Object.defineProperty(refObj, 'value', {
-      value,
-    });
+    refObj.value = value;
   }
 );
 export const getter = refObj => (
-  () => lodash.clone(refObj)
+  () => {
+    console.log('innnn');
+    return lodash.clone(refObj);
+  }
 );
 export default (target, name, descriptor) => {
   const refObj = {};
+  console.log('safas');
   return ({
     get: getter(refObj),
     set: setter(refObj, descriptor),

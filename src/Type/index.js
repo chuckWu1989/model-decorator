@@ -22,9 +22,7 @@ export default (type, { errorMessage: message } = {}) => (
   (target, name, descriptor) => {
     const { checkers = [] } = descriptor;
     checkers.push({ check, message });
-    Object.defineProperties(descriptor, 'checkers', {
-      value: checkers,
-    });
+    descriptor.checkers = checkers;
     return descriptor;
   }
 );
