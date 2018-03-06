@@ -1,0 +1,12 @@
+{
+  "extends" : "../.eslintrc",
+  "rules": {
+    "no-underscore-dangle": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-restricted-syntax": "off",
+    "no-console": "off",
+    "comma-dangle": ["off", "functions"],
+    "global-require": "off",
+    "import/no-dynamic-require": "off"
+  }
+}

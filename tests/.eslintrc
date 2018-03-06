@@ -1,0 +1,15 @@
+{
+  "extends" : "../.eslintrc",
+  "plugins": [
+    "jest"
+  ],
+  "env": {
+    "jest/globals": true
+  },
+  "globals" : {
+    "shallow": false,
+    "render": false,
+    "mount": false,
+    "toJson": false
+  }
+}
