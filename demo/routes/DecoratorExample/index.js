@@ -4,6 +4,7 @@ import './style.less';
 
 const member = new Member();
 member.name = 'John';
+console.log(member.name);
 
 const SimpleExample = () => (
   <div />

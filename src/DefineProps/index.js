@@ -15,16 +15,14 @@ export const setter = (refObj, descriptor) => (
   }
 );
 export const getter = refObj => (
-  () => {
-    console.log('innnn');
-    return lodash.clone(refObj);
-  }
+  () => lodash.clone(refObj)
 );
 export default (target, name, descriptor) => {
   const refObj = {};
-  console.log('safas');
   return ({
     get: getter(refObj),
     set: setter(refObj, descriptor),
+    configurable: true,
+    enumerable: true,
   });
 };
