@@ -4,7 +4,7 @@ export const setter = (refObj, validates) => (
   (value) => {
     validates.every((item) => {
       const { check, message } = item;
-      const isPassed = check(value, refObj);
+      const isPassed = check(value);
       if (!isPassed) {
         refObj.error = message;
         return false;

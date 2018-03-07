@@ -1,17 +1,28 @@
+import React, { Component } from 'react';
+
 export default Model => (
-  (target) => {
-    const instanceModel = new Model();
-    const proto = Object.getPrototypeOf(instanceModel);
-    const keys = Object.keys(proto);
-    const propTypes = keys.map(key => instanceModel[key].getType());
-    Object.defineProperties(target, {
-      propTypes: {
-        value: propTypes,
-        configurable: true,
-        writable: true,
-        enumerable: true,
-      },
-    });
-    return target;
-  }
+  WrappedComponent => (
+    class extends Component {
+      componentWillMount() {
+        this.setState({ model: new Model() });
+      }
+      componentWillReceiveProps(nextProps) {
+        const { model } = this.state;
+        const nextModel = model.clone();
+        nextModel.setValues(nextProps);
+        console.log(nextModel, model);
+        if (!nextModel.isEqual(model)) {
+          this.setState({ model: nextModel });
+        }
+      }
+      render() {
+        const { props, state } = this;
+        const { model } = state;
+        const modelProps = model.getValues(model);
+        return (
+          <WrappedComponent {...props} {...modelProps} />
+        );
+      }
+    }
+  )
 );

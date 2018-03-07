@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { Type, DefineProps } from '../../src';
+import { Type, DefineProps, BaseModel } from '../../src';
 
-class Member {
+class Member extends BaseModel {
   @DefineProps
   @Type(PropTypes.string, { errorMessage: 'Error name' })
   name

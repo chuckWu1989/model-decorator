@@ -24,6 +24,8 @@
     "react/forbid-prop-types": "off",
     "no-underscore-dangle": "off",
     "no-param-reassign": "off",
+    "react/prop-types": "off",
+    "react/no-multi-comp": "off",
     "jsx-a11y/anchor-is-valid":  [ "off", {
       "components": [ "Link" ]
     }]
