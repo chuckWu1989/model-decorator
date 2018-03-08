@@ -26,6 +26,7 @@
     "no-param-reassign": "off",
     "react/prop-types": "off",
     "react/no-multi-comp": "off",
+    "no-sparse-arrays": "off",
     "jsx-a11y/anchor-is-valid":  [ "off", {
       "components": [ "Link" ]
     }]

@@ -10,12 +10,12 @@ class MemberView extends Component {
       <div>
         <div>
           <span>
-            {this.props.name.value}
+            {this.props.name.val()}
           </span>
         </div>
         <div>
           <span>
-            {this.props.age.value}
+            {this.props.age.val()}
           </span>
         </div>
       </div>

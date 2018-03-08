@@ -1,33 +1,31 @@
 class BaseModel {
-  constructor() {
-    console.log(this);
-  }
   getValues() {
     const result = {};
-    const proto = Object.getPrototypeOf(this);
-    Object.keys(proto).forEach((key) => {
-      result[key] = this[key];
+    Object.keys(this).forEach((key) => {
+      result[key] = this[key].val();
     });
     return result;
   }
-  setValues(props) {
+  setValues(props, opts) {
     Object.keys(props).forEach((key) => {
       if (key in this) {
-        this[key] = props[key];
+        this[key].set(props[key], opts);
       }
     });
   }
   clone() {
-    const Model = this;
+    const values = this.getValues();
+    const proto = Object.getPrototypeOf(this);
+    const { constructor: Model } = proto;
     const model = new Model();
-    console.log(model);
+    model.setValues(values, { silence: true });
     return model;
   }
   isEqual(model) {
     const values = model.getValues();
-    const NextValues = this.getValues();
-    console.log(values, NextValues);
-    return false;
+    const nextValues = this.getValues();
+    const result = Object.keys(values).every(key => nextValues[key] === values[key]);
+    return result;
   }
 }
 

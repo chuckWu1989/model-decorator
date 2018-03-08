@@ -1,17 +1,20 @@
 /* eslint no-console: off */
-import secret from './config';
+import { secret } from '../constants/config';
 
 export const enhanceTarget = type => (
   (refObj) => {
     const prototype = {};
     Object.defineProperty(prototype, 'getType', {
       value: () => type,
+      writable: false,
+      enumerable: false,
+      configurable: false,
     });
     Object.setPrototypeOf(refObj, prototype);
   }
 );
 export const checkPropTypes = (propTypes, className, name) => (
-  (value) => {
+  (value, { silence }) => {
     let result;
     try {
       const checkResult = propTypes(
@@ -25,7 +28,9 @@ export const checkPropTypes = (propTypes, className, name) => (
       if (checkResult === null) {
         result = true;
       } else {
-        console.error(checkResult);
+        if (process.env.NODE_ENV !== 'production' && silence !== true) {
+          console.error(checkResult);
+        }
         result = false;
       }
     } catch (e) {

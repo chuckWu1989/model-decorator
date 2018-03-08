@@ -10,7 +10,6 @@ export default Model => (
         const { model } = this.state;
         const nextModel = model.clone();
         nextModel.setValues(nextProps);
-        console.log(nextModel, model);
         if (!nextModel.isEqual(model)) {
           this.setState({ model: nextModel });
         }
@@ -18,9 +17,8 @@ export default Model => (
       render() {
         const { props, state } = this;
         const { model } = state;
-        const modelProps = model.getValues(model);
         return (
-          <WrappedComponent {...props} {...modelProps} />
+          <WrappedComponent {...props} {...model} />
         );
       }
     }
