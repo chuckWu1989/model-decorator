@@ -1,11 +1,14 @@
-export default (
-  [lowerBound = 0, upperBound = Infinity],
-  { errorMessage: message, mode = INCLUDEUL } = {},
-) => (
+export const checkRegex = regex => (
+  (value) => {
+    const regexExp = new RegExp(regex);
+    return regexExp.test(value);
+  }
+);
+export default (regex, { errorMessage: message } = {}) => (
   (target, name, descriptor) => {
     const { decorators = [] } = descriptor;
     decorators.push({
-      check: checkRange(lowerBound, upperBound, mode),
+      check: checkRegex(regex),
       message,
     });
     descriptor.decorators = decorators;

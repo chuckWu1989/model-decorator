@@ -6,5 +6,7 @@ import BaseModel from './BaseModel';
 import Range from './Range';
 import DefaultValue from './DefaultValue';
 import StringLen from './StringLen';
+import Regex from './Regex';
+import DisplayName from './DisplayName';
 
-export { DefineProps, Type, ViewModel, BaseModel, Required, Range, DefaultValue, StringLen };
+export { DefineProps, Type, ViewModel, BaseModel, Required, Range, DefaultValue, StringLen, Regex, DisplayName };

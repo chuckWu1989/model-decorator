@@ -1,30 +1,95 @@
 import React, { Component } from 'react';
-import Member from '../../models/Member';
+import AlbumModel from './AlbumModel';
+import './style.less';
 
 class StateExample extends Component {
   constructor(props) {
     super(props);
-    this.ageChanged = this.ageChanged.bind(this);
-    this.nameChanged = this.nameChanged.bind(this);
-    this.state = new Member();
+    this.changeGenre = this.changeGenre.bind(this);
+    this.changeArtist = this.changeArtist.bind(this);
+    this.changeTitle = this.changeTitle.bind(this);
+    this.changePrice = this.changePrice.bind(this);
+    this.changeURL = this.changeURL.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.state = { model: new AlbumModel() };
   }
-  ageChanged(event) {
-    const { age } = this.state;
-    this.setState({ age: age.set(Number(event.target.value)) });
+  onSubmit() {
+    const result = AlbumModel.checkErrors(this.state);
+    const submitErr = result !== undefined ? 'There are some errors in form list. Please check it.' : undefined;
+    this.setState({ submitErr });
   }
-  nameChanged(event) {
-    const { name } = this.state;
-    this.setState({ name: name.set(event.target.value) });
+  changeGenre(e) {
+    const { genre } = this.state;
+    this.setState({ genre: genre.set(Number(e.target.value)) });
+  }
+  changeArtist(e) {
+    const { artist } = this.state;
+    this.setState({ artist: artist.set(Number(e.target.value)) });
+  }
+  changeTitle(e) {
+    const { title } = this.state;
+    this.setState({ title: title.set(e.target.value) });
+  }
+  changePrice(e) {
+    const { price } = this.state;
+    this.setState({ price: price.set(Number(e.target.value)) });
+  }
+  changeURL(e) {
+    const { url } = this.state;
+    this.setState({ url: url.set(e.target.value) });
   }
   render() {
-    const { age, name } = this.state;
+    const {
+      genre,
+      artist,
+      title,
+      price,
+      url,
+      submitErr,
+    } = this.state;
     return (
-      <div>
-        <input onChange={this.nameChanged} value={name.val()} />
-        <div>{name.err()}</div>
-        <input type="number" onChange={this.ageChanged} value={age.val()} />
-        <div>{age.err()}</div>
-        <div>{`The name of member is ${name.val()} and the age is ${age.val()}`}</div>
+      <div className="album-style">
+        <form>
+          <div className="title">{genre.title()}</div>
+          <div>
+            <select name="genre" onChange={this.changeGenre} value={genre.val()}>
+              <option value={-1}>Unselected</option>
+              <option value={0}>Jazz</option>
+              <option value={1}>Punk</option>
+              <option value={2}>Ballad</option>
+            </select>
+          </div>
+          <div className="error"><span>{genre.err()}</span></div>
+          <div className="title">{artist.title()}</div>
+          <div>
+            <select name="artist" onChange={this.changeArtist} value={artist.val()}>
+              <option value={-1}>Unselected</option>
+              <option value={0}>Bon Jovi</option>
+              <option value={1}>Ed Sheeran</option>
+              <option value={2}>Post Malone</option>
+            </select>
+          </div>
+          <div className="error"><span>{artist.err()}</span></div>
+          <div className="title">{title.title()}</div>
+          <div>
+            <input name="title" onChange={this.changeTitle} value={title.val()} />
+          </div>
+          <div className="error"><span>{title.err()}</span></div>
+          <div className="title">{price.title()}</div>
+          <div>
+            <input name="price" type="number" onChange={this.changePrice} value={price.val()} />
+          </div>
+          <div className="error"><span>{price.err()}</span></div>
+          <div className="title">{url.title()}</div>
+          <div>
+            <input name="url" onChange={this.changeURL} value={url.val()} />
+          </div>
+          <div className="error"><span>{url.err()}</span></div>
+          <div>
+            <input type="button" onClick={this.onSubmit} value="Create" />
+            <span>{submitErr}</span>
+          </div>
+        </form>
       </div>
     );
   }
