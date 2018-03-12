@@ -2,9 +2,9 @@ export const enhanceTarget = target => (
   (refObj, instanceObj) => {
     const proto = Object.getPrototypeOf(instanceObj);
     Object.defineProperty(proto, 'title', {
-      value: () => target,
+      get: () => target,
+      set: () => {},
       configurable: false,
-      writable: false,
       enumerable: false,
     });
   }

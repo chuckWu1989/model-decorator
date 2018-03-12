@@ -8,9 +8,9 @@ const ViewModel = Model => (
       }
       render() {
         const { props, state: { model } } = this;
-        const modelProps = model.setValues(props);
+        model.setValues(props);
         return (
-          <WrappedComponent {...props} {...modelProps} />
+          <WrappedComponent {...props} model={model} />
         );
       }
     }

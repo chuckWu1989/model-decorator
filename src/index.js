@@ -9,4 +9,15 @@ import StringLen from './StringLen';
 import Regex from './Regex';
 import DisplayName from './DisplayName';
 
-export { DefineProps, Type, ViewModel, BaseModel, Required, Range, DefaultValue, StringLen, Regex, DisplayName };
+export {
+  DefineProps,
+  Type,
+  ViewModel,
+  BaseModel,
+  Required,
+  Range,
+  DefaultValue,
+  StringLen,
+  Regex,
+  DisplayName,
+};

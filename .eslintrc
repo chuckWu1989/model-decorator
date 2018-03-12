@@ -27,6 +27,8 @@
     "react/prop-types": "off",
     "react/no-multi-comp": "off",
     "no-sparse-arrays": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-duplicates": "off",
     "jsx-a11y/anchor-is-valid":  [ "off", {
       "components": [ "Link" ]
     }]

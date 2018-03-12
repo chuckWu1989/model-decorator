@@ -1,17 +1,17 @@
 import React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import SimpleExample from './SimpleExample';
-import RawModel from './SimpleModel?stringFormat';
-import RawExample from './SimpleExample?stringFormat';
+import ReactExample from './ReactExample';
+import RawModel from './AlbumModel?stringFormat';
+import RawExample from './ReactExample?stringFormat';
 import '../../utils/style.less';
 
 export default () => (
   <div>
     <div className="example-title">
-      {'Simple Example'}
+      {'State Example'}
     </div>
     <div className="example-area">
-      <SimpleExample />
+      <ReactExample />
     </div>
     <div className="code-area">
       <SyntaxHighlighter language="javascript">{RawModel}</SyntaxHighlighter>

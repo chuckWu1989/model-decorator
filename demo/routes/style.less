@@ -5,38 +5,42 @@
   .header {
     width: 100%;
     height: 60px;
-    background-color: #0086DB;
+    background-color: #16160e;
     div {
       font-size: 25px;
       color: #ffffff;
       padding: 15px 0 0 20px;
     }
   }
-  .navigator, .content-body {
+  .container {
     width: 100%;
-  }
-  .content-body {
-    height: calc(~"100% - 110px");
-  }
-  .navigator {
-    height: 50px;
-    background-color: #2ca9e1;
-    overflow-y: hidden;
-    .item {
-      width: 150px;
+    height: calc(~"100% - 60px");
+    .navigator {
+      width: 250px;
       height: 100%;
-      a {
-        font-size: 15px;
-        margin: 15px 0;
-        margin-left: 25px;
-        display: inline-block;
-        color: #ffffff;
-        text-decoration-line: none;
-        padding-bottom: 10px;
+      overflow-y: auto;
+      float: left;
+      background-color: #595857;
+      .item {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        margin: 20px 0;
+        a {
+          font-size: 18px;
+          margin-left: 25px;
+          display: inline-block;
+          text-decoration-line: none;
+          padding-bottom: 10px;
+          color: #ffffff;
+        }
       }
-      a:hover {
-        border-bottom: solid 2px #ffffff;
-      }
+    }
+    .content-body {
+      width: calc(~"100% - 250px");
+      height: 100%;
+      float: right;
+      overflow-y: auto;
     }
   }
 }

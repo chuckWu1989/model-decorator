@@ -1,6 +1,10 @@
 export const enhanceTarget = value => (
-  (refObj, instanceObj) => {
-    instanceObj.set(value);
+  (refObj, instanceObj, { checkDefault = true }) => {
+    if (checkDefault === true) {
+      instanceObj.val = value;
+    } else {
+      refObj.value = value;
+    }
   }
 );
 export default value => (

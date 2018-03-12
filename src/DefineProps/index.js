@@ -1,5 +1,5 @@
-export const setter = (refObj, validates) => (
-  function set(value, opts = {}) {
+export const setter = (refObj, validates, opts) => (
+  function set(value) {
     validates.every((item) => {
       refObj.error = undefined;
       const { check, message } = item;
@@ -20,51 +20,47 @@ export const getter = refObj => (
 export const error = refObj => (
   () => refObj.error
 );
-export function ModelItem(refObj, validates) {
+export function ModelItem(refObj, validates, opts) {
   Object.defineProperties(
     this,
     {
       val: {
-        value: getter(refObj),
+        get: getter(refObj),
+        set: setter(refObj, validates, opts),
         configurable: false,
-        writable: false,
         enumerable: false,
       },
       err: {
-        value: error(refObj),
+        get: error(refObj),
+        set: () => {},
         configurable: false,
-        writable: false,
-        enumerable: false,
-      },
-      set: {
-        value: setter(refObj, validates),
-        configurable: false,
-        writable: false,
         enumerable: false,
       },
     },
   );
 }
-export function setInitializer(validates, enhancers) {
+export function setInitializer(validates, enhancers, opts) {
   return (
     function initializer() {
       const refObj = {};
-      const instanceObj = Object.setPrototypeOf({}, new ModelItem(refObj, validates));
-      enhancers.forEach((enhancer) => { enhancer(refObj, instanceObj); });
+      const instanceObj = Object.setPrototypeOf({}, new ModelItem(refObj, validates, opts));
+      enhancers.forEach((enhancer) => { enhancer(refObj, instanceObj, opts); });
       return instanceObj;
     }
   );
 }
-export default (target, name, descriptor) => {
-  const { decorators = [] } = descriptor;
-  const validates = decorators.map(({ check, message }) => (
-    { check, message }
-  )).filter(item => item.check !== undefined);
-  const enhancers = decorators.map(({ enhancer }) => enhancer).filter(item => item !== undefined);
-  return ({
-    initializer: setInitializer(validates, enhancers),
-    enumerable: true,
-    writable: false,
-    configurable: false,
-  });
-};
+export default (opts = {}) => (
+  (target, name, descriptor) => {
+    const { decorators = [] } = descriptor;
+    const validates = decorators.map(({ check, message }) => (
+      { check, message }
+    )).filter(item => item.check !== undefined);
+    const enhancers = decorators.map(({ enhancer }) => enhancer).filter(item => item !== undefined);
+    return ({
+      initializer: setInitializer(validates, enhancers, opts),
+      enumerable: true,
+      writable: false,
+      configurable: false,
+    });
+  }
+);

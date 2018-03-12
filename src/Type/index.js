@@ -3,14 +3,14 @@ import { secret } from '../constants/config';
 
 export const enhanceTarget = type => (
   (refObj) => {
-    const prototype = {};
-    Object.defineProperty(prototype, 'getType', {
+    const proto = Object.getPrototypeOf(refObj);
+    Object.defineProperty(proto, 'getType', {
       value: () => type,
       writable: false,
       enumerable: false,
-      configurable: false,
+      configurable: true,
     });
-    Object.setPrototypeOf(refObj, prototype);
+    Object.setPrototypeOf(refObj, proto);
   }
 );
 export const checkPropTypes = (propTypes, className, name) => (
