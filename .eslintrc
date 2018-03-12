@@ -29,6 +29,7 @@
     "no-sparse-arrays": "off",
     "import/no-extraneous-dependencies": "off",
     "import/no-duplicates": "off",
+    "no-plusplus": "off",
     "jsx-a11y/anchor-is-valid":  [ "off", {
       "components": [ "Link" ]
     }]

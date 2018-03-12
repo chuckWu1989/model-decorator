@@ -1,4 +1,5 @@
 import { INCLUDEUL, INCLUDEU, INCLUDEL, NEITHERUL, OUT, OUTU, OUTL, OUTUL } from '../constants/config';
+import Descriptor from '../Descriptor';
 
 export const checkRange = (lowerBound, upperBound, mode) => (
   (value) => {
@@ -19,14 +20,7 @@ export const checkRange = (lowerBound, upperBound, mode) => (
 export default (
   [lowerBound = -Infinity, upperBound = Infinity],
   { errorMessage: message, mode = INCLUDEL } = {},
-) => (
-  (target, name, descriptor) => {
-    const { decorators = [] } = descriptor;
-    decorators.push({
-      check: checkRange(lowerBound, upperBound, mode),
-      message,
-    });
-    descriptor.decorators = decorators;
-    return descriptor;
-  }
-);
+) => {
+  const check = checkRange(lowerBound, upperBound, mode);
+  return Descriptor(check, null, message);
+};

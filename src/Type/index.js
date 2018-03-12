@@ -1,5 +1,6 @@
 /* eslint no-console: off */
 import { secret } from '../constants/config';
+import Descriptor from '../Descriptor';
 
 export const enhanceTarget = type => (
   (refObj) => {
@@ -41,14 +42,9 @@ export const checkPropTypes = (propTypes, className, name) => (
 );
 export default (type, { errorMessage: message } = {}) => (
   (target, name, descriptor) => {
-    const { name: className } = target.constructor;
-    const { decorators = [] } = descriptor;
-    decorators.push({
-      check: checkPropTypes(type, className, name),
-      enhancer: enhanceTarget(type),
-      message,
-    });
-    descriptor.decorators = decorators;
-    return descriptor;
+    const { constructor: { name: className } } = target;
+    const check = checkPropTypes(type, className, name);
+    const enhancer = enhanceTarget(type);
+    return Descriptor(check, enhancer, message)(target, name, descriptor);
   }
 );

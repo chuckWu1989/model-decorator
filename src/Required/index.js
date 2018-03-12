@@ -1,22 +1,17 @@
+import Descriptor from '../Descriptor';
+
 export const checkRequired = criterions => (
   (value) => {
     let result = true;
     if (typeof criterions === 'function') {
       result = criterions(value);
-    } else if (value === undefined || value === '' || value === null) {
+    } else if (value === undefined) {
       result = false;
     }
     return result;
   }
 );
-export default ({ errorMessage: message, criterions } = {}) => (
-  (target, name, descriptor) => {
-    const { decorators = [] } = descriptor;
-    decorators.push({
-      check: checkRequired(criterions),
-      message,
-    });
-    descriptor.decorators = decorators;
-    return descriptor;
-  }
-);
+export default ({ errorMessage: message, criterions } = {}) => {
+  const check = checkRequired(criterions);
+  return Descriptor(check, null, message);
+};

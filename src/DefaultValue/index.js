@@ -1,3 +1,5 @@
+import Descriptor from '../Descriptor';
+
 export const enhanceTarget = value => (
   (refObj, instanceObj, { checkDefault = true }) => {
     if (checkDefault === true) {
@@ -7,11 +9,7 @@ export const enhanceTarget = value => (
     }
   }
 );
-export default value => (
-  (target, name, descriptor) => {
-    const { decorators = [] } = descriptor;
-    decorators.push({ enhancer: enhanceTarget(value) });
-    descriptor.decorators = decorators;
-    return descriptor;
-  }
-);
+export default (value) => {
+  const enhancer = enhanceTarget(value);
+  return Descriptor(null, enhancer);
+};

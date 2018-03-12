@@ -1,3 +1,5 @@
+import Descriptor from '../Descriptor';
+
 export const enhanceTarget = target => (
   (refObj, instanceObj) => {
     const proto = Object.getPrototypeOf(instanceObj);
@@ -9,11 +11,7 @@ export const enhanceTarget = target => (
     });
   }
 );
-export default title => (
-  (target, name, descriptor) => {
-    const { decorators = [] } = descriptor;
-    decorators.push({ enhancer: enhanceTarget(title) });
-    descriptor.decorators = decorators;
-    return descriptor;
-  }
-);
+export default (title) => {
+  const enhancer = enhanceTarget(title);
+  return Descriptor(null, enhancer);
+};

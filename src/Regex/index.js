@@ -1,17 +1,12 @@
+import Descriptor from '../Descriptor';
+
 export const checkRegex = regex => (
   (value) => {
     const regexExp = new RegExp(regex);
     return regexExp.test(value);
   }
 );
-export default (regex, { errorMessage: message } = {}) => (
-  (target, name, descriptor) => {
-    const { decorators = [] } = descriptor;
-    decorators.push({
-      check: checkRegex(regex),
-      message,
-    });
-    descriptor.decorators = decorators;
-    return descriptor;
-  }
-);
+export default (regex, { errorMessage: message } = {}) => {
+  const check = checkRegex(regex);
+  return Descriptor(check, null, message);
+};

@@ -54,8 +54,8 @@ export default (opts = {}) => (
     const { decorators = [] } = descriptor;
     const validates = decorators.map(({ check, message }) => (
       { check, message }
-    )).filter(item => item.check !== undefined);
-    const enhancers = decorators.map(({ enhancer }) => enhancer).filter(item => item !== undefined);
+    )).filter(item => item.check !== null);
+    const enhancers = decorators.map(({ enhancer }) => enhancer).filter(item => item !== null);
     return ({
       initializer: setInitializer(validates, enhancers, opts),
       enumerable: true,

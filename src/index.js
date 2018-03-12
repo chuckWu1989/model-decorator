@@ -8,6 +8,7 @@ import DefaultValue from './DefaultValue';
 import StringLen from './StringLen';
 import Regex from './Regex';
 import DisplayName from './DisplayName';
+import Descriptor from './Descriptor';
 
 export {
   DefineProps,
@@ -20,4 +21,5 @@ export {
   StringLen,
   Regex,
   DisplayName,
+  Descriptor,
 };
