@@ -60,3 +60,6 @@ typings/
 # vscode
 .vscode
 
+# npm lib
+lib
+
