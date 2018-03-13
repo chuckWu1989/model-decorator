@@ -15,6 +15,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node build/scripts/start --sourcemaps --indir demo",
     "build": "cross-env NODE_ENV=production node build/scripts/compile --indir demo",
+    "build:lib": "rimraf lib && npm run build:lib:cjs && npm run build:lib:copy && npm run build:lib:umd",
     "build:lib:cjs": "cross-env NODE_ENV=production node build/scripts/cjsPublisher.js --outdir lib",
     "build:lib:copy": "node build/scripts/copyFiles.js --outdir lib",
     "build:lib:umd": "webpack --config build/umd.webpack.config.js",

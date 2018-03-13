@@ -40,7 +40,7 @@ class BaseModel {
         this[key] instanceof ModelItem
       ) {
         this[key].val = this[key].val;
-        if (this[key].err !== undefined) {
+        if (this[key].err !== null) {
           result.push(this[key].err);
         }
       }

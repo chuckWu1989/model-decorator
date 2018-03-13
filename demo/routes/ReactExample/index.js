@@ -8,7 +8,7 @@ import '../../utils/style.less';
 export default () => (
   <div>
     <div className="example-title">
-      {'State Example'}
+      {'React Example'}
     </div>
     <div className="example-area">
       <ReactExample />
