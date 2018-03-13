@@ -1,0 +1,34 @@
+.simple-example-style {
+  width: 400px;
+  margin: auto;
+  input:not([type=button]), select {
+    width: 100%;
+    border: solid 1px #dcdddd;
+    border-radius: 5px;
+    height: 30px;
+  }
+  input:not([type=button]):focus, select:focus {
+    outline: none;
+  }
+  input[type=button] {
+    width: 100%;
+    height: 40px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: none;
+    border-radius: 7px;
+    margin: auto;
+    display: block;
+    margin: 15px 0;
+  }
+  input[type=button]:hover {
+    cursor: pointer;
+    background-color: #474a4d;
+  }
+  .error {
+    color: #c9171e;
+    font-size: 14px;
+    font-weight: bold;
+    float: right;
+  }
+}

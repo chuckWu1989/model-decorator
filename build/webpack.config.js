@@ -59,7 +59,7 @@ config.module.rules.push({
 // ------------------------------------
 if (!project.disableText) {
   config.module.rules.push({
-    test: /\.(js|jsx|txt)$/,
+    test: /\.(js|jsx|txt|md)$/,
     loader: 'raw-loader',
     resourceQuery: '?stringFormat',
   });

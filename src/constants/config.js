@@ -1,0 +1,9 @@
+export const INCLUDEUL = '[]';
+export const INCLUDEU = '(]';
+export const INCLUDEL = '[)';
+export const NEITHERUL = '()';
+export const OUT = ')(';
+export const OUTU = '](';
+export const OUTL = ')[';
+export const OUTUL = '][';
+export const secret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
