@@ -1,0 +1,17 @@
+{
+  "presets": [
+    ["env", { "modules": false }],
+    "stage-0",
+    "react"
+  ],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-0", "react"]
+    }
+  },
+  "plugins": [
+    "react-hot-loader/babel",
+    "syntax-dynamic-import",
+    "transform-decorators-legacy"
+  ]
+}
