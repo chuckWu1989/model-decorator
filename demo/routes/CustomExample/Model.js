@@ -1,3 +1,4 @@
+// Model
 import PropTypes from 'prop-types';
 import { BaseModel, Descriptor, DefineProps, Type, DisplayName } from '../../../src';
 
@@ -26,13 +27,13 @@ class Model extends BaseModel {
   @DefineProps({ isPassword: false })
   @DisplayName('Account: ')
   @Type(PropTypes.string)
-  @Login({ message: 'Error: at least one lowercase letter (a-z) and one number (0-9)!' })
+  @Login({ message: 'At least one lowercase letter (a-z) and one number (0-9)!' })
   account
 
   @DefineProps({ isPassword: true })
   @DisplayName('Password: ')
   @Type(PropTypes.string)
-  @Login({ message: 'Error: at least one uppercase letter (A-Z) and one number (0-9)!' })
+  @Login({ message: 'At least one uppercase letter (A-Z) and one number (0-9)!' })
   password
 }
 

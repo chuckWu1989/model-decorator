@@ -62,9 +62,5 @@ module.exports = {
     lines: 50,
   },
   /** The list of modules to bundle separately from the core application code */
-  vendors: [
-    'react',
-    'react-dom',
-    'react-router',
-  ].concat(argv._),
+  vendors: [].concat(argv._),
 };

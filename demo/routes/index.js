@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import lazyLoading from '../hocs/lazyLoading';
+import githubImg from '../assets/github.png';
 import './style.less';
 
 const MyRouter = () => (
@@ -8,6 +9,9 @@ const MyRouter = () => (
     <div className="router-style">
       <div className="header">
         <div>Model Decorator</div>
+        <a target="_blank" href="https://github.com/d9767192/model-decorator" rel="noopener noreferrer">
+          <img src={githubImg} alt="git hub connection" />
+        </a>
       </div>
       <div className="container">
         <div className="navigator">

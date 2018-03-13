@@ -1,8 +1,15 @@
 import React from 'react';
 import Loadable from 'react-loadable';
+import './style.less';
 
 const Loading = () => (
-  <div>Loading...</div>
+  <div className="loading-style">
+    <div className="spinner">
+      <div className="bounce1" />
+      <div className="bounce2" />
+      <div className="bounce3" />
+    </div>
+  </div>
 );
 const lazyLoading = loader => (
   Loadable({
