@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "start": "cross-env NODE_ENV=development node build/scripts/start --sourcemaps --indir demo",
-    "build": "cross-env NODE_ENV=production node build/scripts/compile",
+    "build": "cross-env NODE_ENV=production node build/scripts/compile --indir demo",
     "test": "npm run test:lint && npm run test:unit",
     "test:unit": "cross-env NODE_ENV=test jest --config ./build/configs/jest.config.js",
     "test:unit:watch": "npm run test:unit -- --watch",

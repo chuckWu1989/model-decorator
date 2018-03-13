@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import lazyLoading from '../hocs/lazyLoading';
 import githubImg from '../assets/github.png';
 import './style.less';

@@ -21,7 +21,7 @@ module.exports = {
   /** The port of the server */
   port: argv.port || 3000,
   /** The base path for all projects assets (relative to the website root) */
-  publicPath: argv.publicpath || '/',
+  publicPath: argv.publicpath || '',
   /** Whether to generate sourcemaps */
   sourcemaps: argv.sourcemaps || false,
   /** A hash map of keys that the compiler should treat as external to the project */
