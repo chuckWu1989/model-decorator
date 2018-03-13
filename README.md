@@ -57,7 +57,7 @@ That's all!
 
 ## Examples
 
-You can find more examples in our demo pages: [Click Me](https://github.com/d9767192/model-decorator/dist)
+You can find more examples in our demo pages: [Click Me](https://d9767192.github.io/model-decorator/dist/#/)
 
 ## Setting of ES7 Decorator
 
@@ -92,7 +92,7 @@ Besides, we also need plugin `transform-decorators-legacy` to transfer `@` synta
 
 ## Documentation
 
-Check out our [Documentation page](https://github.com/d9767192/model-decorator/docs/api.md)
+Check out our [Documentation page](https://github.com/d9767192/model-decorator/blob/master/docs/api.md)
 
 ## License
 
