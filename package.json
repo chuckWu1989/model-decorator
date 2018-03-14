@@ -1,6 +1,6 @@
 {
   "name": "model-decorator",
-  "version": "0.1.0-0",
+  "version": "0.1.0-1",
   "description": "Better model, Better life!",
   "main": "./src/index.js",
   "author": "Chuck Wu",
