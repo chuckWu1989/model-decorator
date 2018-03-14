@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const LIBRARY_NAME = 'model-decorator';
+const LIBRARY_NAME = 'modelDecorator';
 
 const config = {
   entry: {
@@ -20,9 +20,18 @@ const config = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /(node_modules)/,
-        query: {
-          cacheDirectory: true,
-        },
+        options: {
+          babelrc: false,
+          presets: [
+            ['env', { modules: false }],
+            'stage-0',
+            'react'
+          ],
+          plugins: [
+            'syntax-dynamic-import',
+            'transform-decorators-legacy'
+          ]
+        }
       },
     ],
   },

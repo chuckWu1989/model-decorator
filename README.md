@@ -59,6 +59,8 @@ That's all!
 
 You can find more examples in our demo pages: [Click Me](https://d9767192.github.io/model-decorator/dist/#/)
 
+Furthermore, there is a codepen playground. You can try anything if you want: [Click Me](https://codepen.io/d9767192/pen/xWZYmN)
+
 ## Setting of ES7 Decorator
 
 Because decorator is a modern feature in ES7, the browser compatibility is still not so powerful. Therefore, we need to turn to babel. In Babel 7, the decorator feature is the default plugin in stage-0. You will need to include it as:
