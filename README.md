@@ -17,7 +17,7 @@ model-decorator is available from npm:
 Here is a quick example to get you started, it's all you need:
 
 View model construction
-```
+```javascript
 import { DefineProps, Type, DisplayName, StringLen } from 'model-decorator';
 
 class SimpleModel extends BaseModel {
@@ -32,7 +32,7 @@ export default SimpleModel;
 ```
 
 In your component
-```
+```javascript
 import { ViewModel } from 'model-decorator';
 
 @ViewModel(SimpleModel)
