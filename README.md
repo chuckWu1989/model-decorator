@@ -1,5 +1,16 @@
 # model-decorator
 
+<div align="center">
+
+[![npm version](https://badge.fury.io/js/model-decorator.svg)](https://badge.fury.io/js/model-decorator)
+[![dependencies Status](https://david-dm.org/d9767192/model-decorator/master/status.svg)](https://david-dm.org/d9767192/model-decorator/master)
+[![devDependencies Status](https://david-dm.org/d9767192/model-decorator/master/dev-status.svg)](https://david-dm.org/d9767192/model-decorator/master?type=dev)
+[![download](https://img.shields.io/npm/dt/model-decorator.svg?style=flat)](https://npmcharts.com/compare/model-decorator)
+[![License](https://img.shields.io/npm/l/model-decorator.svg)](https://github.com/d9767192/model-decorator/blob/master/LICENSE)
+
+
+</div>
+
 > Better model, better life
 
 The major mission of model-decorator is to solve the data validation problem. Validating input data from user has always been a challenging task for web developer. One way to achieve this goal is to write validation codes in business logic. However, it would make your codes more complex and hard to maintain. Another solution is to use some components which already implemented validation mechanism. This way would loss some elasticity (For example, styles, features limitation etc).
