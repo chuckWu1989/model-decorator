@@ -10,6 +10,7 @@
     }
   },
   "plugins": [
+    "transform-es2015-modules-commonjs",
     "react-hot-loader/babel",
     "syntax-dynamic-import",
     "transform-decorators-legacy"
