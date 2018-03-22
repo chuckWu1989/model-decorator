@@ -29,7 +29,7 @@ Here is a quick example to get you started, it's all you need:
 
 View model construction
 ```javascript
-import { DefineProps, Type, DisplayName, StringLen } from 'model-decorator';
+import { DefineProps, Type, DisplayName, StringLen, BaseModel } from 'model-decorator';
 
 class SimpleModel extends BaseModel {
   @DefineProps()
