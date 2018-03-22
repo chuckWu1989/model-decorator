@@ -101,7 +101,7 @@ Besides, we also need plugin `transform-decorators-legacy` to transfer `@` synta
 }
 ```
 
-* It should be noticed that `transform-decorators-legacy` must behind the `transform-class-properties`
+* It should be noticed that `transform-decorators-legacy` must ahead of `transform-class-properties`
 
 ## Documentation
 
