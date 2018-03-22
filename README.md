@@ -95,13 +95,13 @@ Besides, we also need plugin `transform-decorators-legacy` to transfer `@` synta
     "stage-0"
   ],
   "plugins": [
-    "syntax-dynamic-import",
-    "transform-decorators-legacy"
+    "transform-decorators-legacy",
+    "transform-class-properties"
   ]
 }
 ```
 
-* It should be noticed that `transform-decorators-legacy` must behind the `syntax-dynamic-import`
+* It should be noticed that `transform-decorators-legacy` must behind the `transform-class-properties`
 
 ## Documentation
 
