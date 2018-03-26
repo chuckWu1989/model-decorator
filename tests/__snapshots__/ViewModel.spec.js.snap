@@ -4,6 +4,7 @@ exports[`ViewModel should render properly 1`] = `
 <WrappedComponent
   model={
     Model {
+      "getValues": [Function],
       "setValues": [Function],
     }
   }

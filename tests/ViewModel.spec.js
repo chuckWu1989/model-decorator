@@ -8,6 +8,7 @@ describe('ViewModel', () => {
   it('should render properly', () => {
     const model = function Model() {
       this.setValues = () => {};
+      this.getValues = () => ({});
     };
     const WrappedComponent = () => <div />;
     const ViewModelComponent = ViewModel(model)(WrappedComponent);
