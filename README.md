@@ -29,7 +29,7 @@ Here is a quick example to get you started, it's all you need:
 
 View model construction
 ```javascript
-import { DefineProps, Type, DisplayName, StringLen } from 'model-decorator';
+import { DefineProps, Type, DisplayName, StringLen, BaseModel } from 'model-decorator';
 
 class SimpleModel extends BaseModel {
   @DefineProps()
@@ -95,13 +95,13 @@ Besides, we also need plugin `transform-decorators-legacy` to transfer `@` synta
     "stage-0"
   ],
   "plugins": [
-    "syntax-dynamic-import",
-    "transform-decorators-legacy"
+    "transform-decorators-legacy",
+    "transform-class-properties"
   ]
 }
 ```
 
-* It should be noticed that `transform-decorators-legacy` must behind the `syntax-dynamic-import`
+* It should be noticed that `transform-decorators-legacy` must ahead of `transform-class-properties`
 
 ## Documentation
 
